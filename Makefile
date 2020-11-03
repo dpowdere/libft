@@ -40,8 +40,7 @@ fclean: clean
 re: fclean all
 
 $(NAME): $(O)
-	ar rcD $@ $^
-	ranlib $@
+	ar rcDs $@ $^
 
 $(O): $(HEADER) $(C)
 	gcc $(COMPILE_FLAGS) -c $(C)
