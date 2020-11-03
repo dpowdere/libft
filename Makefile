@@ -18,6 +18,8 @@ CONTENTS = \
 	isascii \
 	isdigit \
 	isprint \
+	strchr \
+	strrchr \
 	strlen \
 	tolower \
 	toupper

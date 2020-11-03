@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/02 17:08:45 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/02 17:18:11 by dpowdere         ###   ########.fr       */
+/*   Created: 2020/11/03 15:20:18 by dpowdere          #+#    #+#             */
+/*   Updated: 2020/11/03 15:46:23 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t len;
+	char	*cursor;
+	char	ascii_char;
 
-	len = 0;
-	while (*s++)
-		++len;
-	return (len);
+	cursor = (char *)s;
+	ascii_char = (char)c;
+	while (*cursor != '\0' && *cursor != ascii_char)
+		++cursor;
+	if (*cursor == ascii_char)
+		return (cursor);
+	return (NULL);
 }
