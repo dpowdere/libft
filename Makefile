@@ -40,7 +40,7 @@ fclean: clean
 re: fclean all
 
 $(NAME): $(O)
-	ar -cru $@ $^
+	ar rcD $@ $^
 	ranlib $@
 
 $(O): $(HEADER) $(C)
