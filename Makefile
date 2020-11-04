@@ -21,6 +21,7 @@ CONTENTS = \
 	memccpy \
 	memcmp \
 	memcpy \
+	memmove \
 	memset \
 	strchr \
 	strlcat \
@@ -47,7 +48,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all clean
+re: fclean all
 
 $(NAME): $(O)
 	ar rcDs $@ $^
