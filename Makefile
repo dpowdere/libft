@@ -19,6 +19,8 @@ CONTENTS = \
 	isdigit \
 	isprint \
 	strchr \
+	strlcat \
+	strlcpy \
 	strlen \
 	strncmp \
 	strnstr \
