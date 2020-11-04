@@ -28,13 +28,10 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	{
 		is_match = 1;
 		j = 0;
-		while (i + j < len && j < needle_len && needle[j])
+		while (is_match && i + j < len && j < needle_len && needle[j])
 		{
 			if (haystack[i + j] != needle[j])
-			{
 				is_match = 0;
-				break;
-			}
 			++j;
 		}
 		if (is_match)
