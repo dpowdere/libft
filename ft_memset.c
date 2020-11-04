@@ -12,7 +12,7 @@
 
 #include <stddef.h>
 
-void	*memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char *mem;
 
@@ -20,4 +20,9 @@ void	*memset(void *s, int c, size_t n)
 	while (n-- > 0)
 		*mem++ = (unsigned char)c;
 	return (s);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	(void)ft_memset(s, 0, n);
 }
