@@ -18,6 +18,7 @@ CONTENTS = \
 	isascii \
 	isdigit \
 	isprint \
+	memcmp \
 	memset \
 	strchr \
 	strlcat \
