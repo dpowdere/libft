@@ -19,6 +19,7 @@ CONTENTS = \
 	isdigit \
 	isprint \
 	memccpy \
+	memchr \
 	memcmp \
 	memcpy \
 	memmove \
