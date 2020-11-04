@@ -18,6 +18,7 @@ CONTENTS = \
 	isascii \
 	isdigit \
 	isprint \
+	memccpy \
 	memcmp \
 	memcpy \
 	memset \
@@ -46,7 +47,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean all clean
 
 $(NAME): $(O)
 	ar rcDs $@ $^
