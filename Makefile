@@ -19,8 +19,10 @@ CONTENTS = \
 	isdigit \
 	isprint \
 	strchr \
-	strrchr \
 	strlen \
+	strncmp \
+	strnstr \
+	strrchr \
 	tolower \
 	toupper
 
@@ -28,7 +30,7 @@ NAME = $(LIBNAME).a
 HEADER = $(LIBNAME).h
 GCH = $(HEADER).gch
 C = $(patsubst %, ft_%.c, $(CONTENTS))
-O = $(patsubst %, ft_%.o, $(CONTENTS))
+O = $(patsubst %, .ft_%.o, $(CONTENTS))
 COMPILE_FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
