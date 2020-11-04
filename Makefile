@@ -19,6 +19,7 @@ CONTENTS = \
 	isdigit \
 	isprint \
 	memcmp \
+	memcpy \
 	memset \
 	strchr \
 	strlcat \
@@ -37,7 +38,7 @@ C = $(patsubst %, ft_%.c, $(CONTENTS))
 O = $(patsubst %, ft_%.o, $(CONTENTS))
 COMPILE_FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
+all: $(NAME) clean
 
 clean:
 	rm -f $(O) $(GCH)
