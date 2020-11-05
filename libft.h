@@ -6,14 +6,17 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/02 21:31:19 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/05 08:16:51 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <errno.h>
+# include <limits.h>
 # include <stddef.h>
+# include <stdlib.h>
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
@@ -35,6 +38,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

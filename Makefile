@@ -13,6 +13,7 @@
 LIBNAME = libft
 CONTENTS = \
 	atoi \
+	calloc \
 	isalnum \
 	isalpha \
 	isascii \
