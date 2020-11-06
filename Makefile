@@ -36,6 +36,7 @@ CONTENTS = \
 	tolower \
 	toupper \
 \
+	put \
 	substr
 
 
