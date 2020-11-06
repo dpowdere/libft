@@ -37,6 +37,7 @@ CONTENTS = \
 	toupper \
 \
 	put \
+	strjoin \
 	substr
 
 
