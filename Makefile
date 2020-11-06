@@ -26,6 +26,7 @@ CONTENTS = \
 	memmove \
 	memset \
 	strchr \
+	strdup \
 	strlcat \
 	strlcpy \
 	strlen \
