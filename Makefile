@@ -34,7 +34,10 @@ CONTENTS = \
 	strnstr \
 	strrchr \
 	tolower \
-	toupper
+	toupper \
+\
+	substr
+
 
 NAME = $(LIBNAME).a
 HEADER = $(LIBNAME).h
