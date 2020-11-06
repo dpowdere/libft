@@ -6,12 +6,12 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 07:52:42 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/05 09:49:16 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/06 13:10:46 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
-#include <limits.h>
+#include <stdint.h>
 #include <stddef.h>
 #include <stdlib.h>
 

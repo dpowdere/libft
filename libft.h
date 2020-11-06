@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/05 08:16:51 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/06 13:10:30 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define LIBFT_H
 
 # include <errno.h>
-# include <limits.h>
 # include <stddef.h>
+# include <stdint.h>
 # include <stdlib.h>
 
 char	*ft_strchr(const char *s, int c);
