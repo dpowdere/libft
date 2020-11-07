@@ -40,6 +40,7 @@ CONTENTS = \
 	put \
 	split \
 	strjoin \
+	strmapi \
 	strtrim \
 	substr
 
