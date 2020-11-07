@@ -36,6 +36,7 @@ CONTENTS = \
 	tolower \
 	toupper \
 \
+	itoa \
 	put \
 	split \
 	strjoin \
