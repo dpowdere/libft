@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 11:49:51 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/07 12:36:04 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/07 12:38:14 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char			*start;
-	char			*end;
-	char			*trimmed;
+	char *start;
+	char *end;
+	char *trimmed;
 
 	start = (char *)s1;
 	while (*start && ft_strchr(set, *start))
