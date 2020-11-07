@@ -38,6 +38,7 @@ CONTENTS = \
 \
 	put \
 	strjoin \
+	strtrim \
 	substr
 
 
