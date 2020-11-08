@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_bonus.h                                      :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/07 17:10:48 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/08 15:09:17 by dpowdere         ###   ########.fr       */
+/*   Created: 2020/11/08 22:28:19 by dpowdere          #+#    #+#             */
+/*   Updated: 2020/11/08 22:37:12 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_BONUS_H
-# define LIBFT_BONUS_H
+#include "libft_bonus.h"
 
-# include <stdlib.h>
-
-typedef struct	s_list
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	void			*content;
-	struct s_list	*next;
-}				t_list;
-
-t_list			*ft_lstnew(void *content);
-
-void			ft_lstadd_front(t_list **lst, t_list *new);
-
-#endif
+	if (!lst)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}

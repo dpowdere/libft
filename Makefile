@@ -44,6 +44,7 @@ CONTENTS = \
 	strtrim \
 	substr
 BONUS = \
+	lstadd_front \
 	lstnew
 
 
@@ -75,14 +76,14 @@ clean:
 	$(DONE)
 
 fclean: clean
-	@printf "Remove static library file... "
+	@printf "Remove '$(NAME)' static library file... "
 	@rm -f $(NAME)
 	$(DONE)
 
 re: fclean all
 
 $(NAME): $(O)
-	@printf "Compose static library... "
+	@printf "Compose '$@' static library... "
 	@ar rcDs $@ $^
 	$(DONE)
 
