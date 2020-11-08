@@ -43,19 +43,30 @@ CONTENTS = \
 	strmapi \
 	strtrim \
 	substr
+BONUS = \
+	lstnew
 
 
 NAME = $(LIBNAME).a
 HEADER = $(LIBNAME).h
-GCH = $(HEADER).gch
 C = $(patsubst %, ft_%.c, $(CONTENTS))
 O = $(patsubst %, ft_%.o, $(CONTENTS))
+HBONUS = $(LIBNAME)_bonus.h
+CBONUS = $(patsubst %, ft_%.c, $(BONUS))
+OBONUS = $(patsubst %, ft_%.o, $(BONUS))
 COMPILE_FLAGS = -Wall -Wextra -Werror
+ISBONUS = 0
 
-all: $(NAME) clean
+all: $(NAME)
+
+bonus: ISBONUS = 1
+bonus: O += $(OBONUS)
+bonus: C += $(CBONUS)
+bonus: HEADER += $(HBONUS)
+bonus: $(NAME)
 
 clean:
-	rm -f $(O) $(GCH)
+	@rm -f $(O) $(OBONUS) $(HEADER).gch $(HBONUS).gch
 
 fclean: clean
 	rm -f $(NAME)
@@ -66,6 +77,6 @@ $(NAME): $(O)
 	ar rcDs $@ $^
 
 $(O): $(HEADER) $(C)
-	gcc $(COMPILE_FLAGS) -c $(C)
+	gcc $(COMPILE_FLAGS) -DBONUS=${ISBONUS} -c $(C)
 
 .PHONY: all clean fclean re

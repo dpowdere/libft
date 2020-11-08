@@ -18,6 +18,9 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
+# if defined(BONUS) && BONUS == 1
+#  include "libft_bonus.h"
+# endif
 
 /*
 ** Standard library
