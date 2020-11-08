@@ -56,6 +56,10 @@ CBONUS = $(patsubst %, ft_%.c, $(BONUS))
 OBONUS = $(patsubst %, ft_%.o, $(BONUS))
 COMPILE_FLAGS = -Wall -Wextra -Werror
 ISBONUS = 0
+SHELL = /bin/bash
+# By default Make uses /bin/sh as its shell. Unless $(SHELL) variable is
+# redefined to bash, the ascii color escape codes will not work.
+DONE = @printf "\x1b[32mDONE\x1b[0m\n"
 
 all: $(NAME)
 
@@ -66,17 +70,25 @@ bonus: HEADER += $(HBONUS)
 bonus: $(NAME)
 
 clean:
+	@printf "Remove relocatable object files... "
 	@rm -f $(O) $(OBONUS) $(HEADER).gch $(HBONUS).gch
+	$(DONE)
 
 fclean: clean
-	rm -f $(NAME)
+	@printf "Remove static library file... "
+	@rm -f $(NAME)
+	$(DONE)
 
 re: fclean all
 
 $(NAME): $(O)
-	ar rcDs $@ $^
+	@printf "Compose static library... "
+	@ar rcDs $@ $^
+	$(DONE)
 
 $(O): $(HEADER) $(C)
-	gcc $(COMPILE_FLAGS) -DBONUS=${ISBONUS} -c $(C)
+	@printf "Compile relocatable object files... "
+	@gcc $(COMPILE_FLAGS) -DBONUS=${ISBONUS} -c $(C)
+	$(DONE)
 
 .PHONY: all clean fclean re
