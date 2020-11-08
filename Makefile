@@ -44,6 +44,7 @@ CONTENTS = \
 	strtrim \
 	substr
 BONUS = \
+	lstadd_back \
 	lstadd_front \
 	lstnew
 
