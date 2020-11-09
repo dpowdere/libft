@@ -50,6 +50,7 @@ BONUS = \
 	lstdelone \
 	lstiter \
 	lstlast \
+	lstmap \
 	lstnew \
 	lstsize
 
