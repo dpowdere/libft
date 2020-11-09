@@ -21,5 +21,8 @@ void			ft_lstadd_back(t_list **lst, t_list *new)
 	cursor = *lst;
 	while (cursor && cursor->next)
 		cursor = cursor->next;
-	cursor->next = new;
+	if (cursor)
+		cursor->next = new;
+	else
+		*lst = new;
 }
