@@ -46,7 +46,8 @@ CONTENTS = \
 BONUS = \
 	lstadd_back \
 	lstadd_front \
-	lstnew
+	lstnew \
+	lstsize
 
 
 NAME = $(LIBNAME).a
