@@ -46,6 +46,7 @@ CONTENTS = \
 BONUS = \
 	lstadd_back \
 	lstadd_front \
+	lstlast \
 	lstnew \
 	lstsize
 
