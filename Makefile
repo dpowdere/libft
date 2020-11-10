@@ -63,18 +63,20 @@ HBONUS = $(LIBNAME)_bonus.h
 CBONUS = $(patsubst %, ft_%.c, $(BONUS))
 OBONUS = $(patsubst %, ft_%.o, $(BONUS))
 COMPILE_FLAGS = -Wall -Wextra -Werror
-ISBONUS = 0
-SHELL = /bin/bash
-# By default Make uses /bin/sh as its shell. Unless $(SHELL) variable is
-# redefined to bash, the ascii color escape codes will not work.
-DONE = @printf "\x1b[32mDONE\x1b[0m\n"
+MAKE_BONUS = 0
+SHELL = /bin/bash  # Unless $(SHELL) variable is redefined, Make uses
+# /bin/sh as its shell command by default. We need to use bash instead so that
+# the ascii escape codes for color output can work.
+GREEN = \x1b[32m
+RESET = \x1b[0m\n
+DONE = @printf "$(GREEN)DONE$(RESET)"
 
 all: $(NAME)
 
-bonus: ISBONUS = 1
-bonus: O += $(OBONUS)
-bonus: C += $(CBONUS)
+bonus: MAKE_BONUS = 1
 bonus: HEADER += $(HBONUS)
+bonus: C += $(CBONUS)
+bonus: O += $(OBONUS)
 bonus: $(NAME)
 
 clean:
@@ -89,14 +91,15 @@ fclean: clean
 
 re: fclean all
 
-$(NAME): $(O)
+.SECONDEXPANSION:
+$(NAME): $$(O)
 	@printf "Compose '$@' static library... "
 	@ar rcDs $@ $^
 	$(DONE)
 
-$(O): $(HEADER) $(C)
+$(O): $$(HEADER) $$(C)
 	@printf "Compile relocatable object files... "
-	@gcc $(COMPILE_FLAGS) -DBONUS=${ISBONUS} -c $(C)
+	@gcc $(COMPILE_FLAGS) -DBONUS=${MAKE_BONUS} -c $(C)
 	$(DONE)
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
