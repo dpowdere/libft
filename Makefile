@@ -63,8 +63,7 @@ HBONUS = $(LIBNAME)_bonus.h
 CBONUS = $(patsubst %, ft_%.c, $(BONUS))
 OBONUS = $(patsubst %, ft_%.o, $(BONUS))
 MAKE_BONUS = 0
-
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -DBONUS=$(MAKE_BONUS)
 SHELL = /bin/bash  # Unless $(SHELL) variable is redefined, Make uses
 # /bin/sh as its shell command by default. We need to use bash instead so that
 # the ascii escape codes for color output can work.
@@ -95,15 +94,15 @@ re: fclean all
 .SECONDEXPANSION:
 $(NAME): $$(O)
 	@printf "Compose '$@' static library... "
-	@ar rcDs $@ $(O)  # $^ instead of $(O) doesn't work properly \
-		# in the bonus case. It expands to plain $(O) without respect \
-		# to bonus target-specific redefinition of $(O) with $(OBONUS) \
-		# addition.
+	@ar rcDs $@ $(O)  # \
+		# $^ instead of $(O) doesn't work properly in the bonus case. It \
+		# expands to plain $(O) without respect to bonus target-specific \
+		# redefinition of $(O) with $(OBONUS) addition.
 	@$(DONE)
 
 $(O) $(OBONUS): $$(HEADER) $$(C)
 	@printf "Compile relocatable object files... "
-	@$(CC) $(CFLAGS) -DBONUS=${MAKE_BONUS} -c $(C)
+	@$(CC) $(CFLAGS) -c $(C)
 	@$(DONE)
 
 .PHONY: all bonus clean fclean re
