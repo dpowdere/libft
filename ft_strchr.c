@@ -15,14 +15,12 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*cursor;
-	char	ascii_char;
+	size_t i;
 
-	cursor = (char *)s;
-	ascii_char = (char)c;
-	while (*cursor != '\0' && *cursor != ascii_char)
-		++cursor;
-	if (*cursor == ascii_char)
-		return (cursor);
-	return (NULL);
+	i = 0;
+	while (s[i] && s[i] != (unsigned char)c)
+		++i;
+	if (s[i] == '\0' && (unsigned char)c != '\0')
+		return (NULL);
+	return ((char *)s + i);
 }
