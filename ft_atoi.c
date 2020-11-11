@@ -12,9 +12,9 @@
 
 int	ft_atoi(const char *nptr)
 {
-	char			*s;
-	int				sign;
-	unsigned int	n;
+	char	*s;
+	int		sign;
+	int		n;
 
 	sign = 1;
 	n = 0;
@@ -29,6 +29,6 @@ int	ft_atoi(const char *nptr)
 		++s;
 	}
 	while (*s >= '0' && *s <= '9')
-		n = n * 10 + (*s++ - '0');
-	return (sign * n);
+		n = n * 10 + (*s++ - '0') * sign;
+	return (n);
 }
