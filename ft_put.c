@@ -38,15 +38,26 @@ void	ft_putendl_fd(char *s, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int	abs_value;
+	int		sign;
+	int		power10;
+	int		x;
+	char	c;
 
 	if (fd < 0)
 		return ;
-	abs_value = (unsigned int)(n < 0 ? -n : n);
 	if (n < 0)
-		ft_putchar_fd('-', fd);
-	if (abs_value / 10u > 0)
-		ft_putnbr_fd((int)(abs_value / 10u), fd);
-	else
-		ft_putchar_fd('0' + abs_value, fd);
+		write(fd, "-", 1);
+	sign = (n < 0 ? -1 : 1);
+	power10 = 1;
+	x = n;
+	while ((x /= 10) != 0)
+		power10 *= 10;
+	while (power10 != 0)
+	{
+		x = n / power10;
+		c = (unsigned char)('0' + x * sign);
+		n %= power10;
+		power10 /= 10;
+		write(fd, &c, 1);
+	}
 }
