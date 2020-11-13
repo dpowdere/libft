@@ -6,45 +6,38 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 14:18:51 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/07 14:43:20 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/13 17:49:59 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
 
-static unsigned int	ft___count_digits(int n)
+char	*ft_itoa(int n)
 {
-	unsigned int	count;
+	int		i;
+	int		digits;
+	int		power10;
+	char	*s;
 
-	if (n == 0)
-		return (1);
-	count = 0;
-	while (n != 0)
+	digits = 1;
+	power10 = 1;
+	i = n;
+	while ((i /= 10) != 0)
 	{
-		n /= 10;
-		++count;
+		power10 *= 10;
+		++digits;
 	}
-	return (count);
-}
-
-char				*ft_itoa(int n)
-{
-	unsigned int	n_digits;
-	char			*str;
-
-	n_digits = ft___count_digits(n);
-	str = (char *)malloc((n_digits + (n < 0 ? 1 : 0) + 1) * sizeof(char));
-	if (!str)
+	if (!(s = (char *)malloc((digits + (n < 0 ? 2 : 1)) * sizeof(char))))
 		return (NULL);
 	if (n < 0)
-		*str = '-';
-	str += n_digits;
-	*str = '\0';
-	while (n_digits-- > 0)
+		s[i++] = '-';
+	while (power10 != 0)
 	{
-		*--str = '0' + n % 10 * (n < 0 ? -1 : 1);
-		n /= 10;
+		s[i++] = (char)(n / power10 * (n < 0 ? -1 : 1) + '0');
+		n %= power10;
+		power10 /= 10;
 	}
-	return (str);
+	s[i] = '\0';
+	return (s);
 }
