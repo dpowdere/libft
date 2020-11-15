@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include <stdlib.h>
 
 #include "libft.h"
@@ -31,8 +32,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimmed = (char *)malloc((end - start + 1) * sizeof(char));
 	if (!trimmed)
 		return (NULL);
-	*(trimmed + (start - ++end)) = '\0';
+	*(trimmed + (++end - start)) = '\0';
 	while (--end >= start)
-		*(trimmed + (start - end)) = *end;
+		*(trimmed + (end - start)) = *end;
 	return (trimmed);
 }
