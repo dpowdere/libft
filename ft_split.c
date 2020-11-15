@@ -25,7 +25,7 @@ static void	ft___count(char const *s, char c, size_t *n_words, size_t *n_chars)
 	*n_chars = (size_t)0;
 	cursor = (char *)s;
 	state = OUT_WORD;
-	while (s != NULL && *cursor)
+	while (*cursor)
 	{
 		if (*cursor == c && state == IN_WORD)
 			state = OUT_WORD;
@@ -50,7 +50,7 @@ static void	ft___fill(char const *s, char c, char **mem, size_t n_words)
 	write_cursor = (char *)(mem + n_words + 1);
 	read_cursor = (char *)s;
 	state = OUT_WORD;
-	while (s != NULL && *read_cursor)
+	while (s && *read_cursor)
 	{
 		if (*read_cursor == c && state == IN_WORD)
 		{
@@ -77,7 +77,8 @@ char		**ft_split(char const *s, char c)
 
 	n_words = (size_t)0;
 	n_chars = (size_t)0;
-	ft___count(s, c, &n_words, &n_chars);
+	if (s)
+		ft___count(s, c, &n_words, &n_chars);
 	string_array = (char **)malloc(
 			(n_words + 1) * sizeof(char *) +
 			(n_chars + n_words) * sizeof(char));
