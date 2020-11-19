@@ -12,7 +12,8 @@
 
 #include <stddef.h>
 #include <stdlib.h>
-#include "libft_bonus.h"
+
+#include "libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
