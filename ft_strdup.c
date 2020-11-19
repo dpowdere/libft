@@ -22,6 +22,8 @@ char	*ft_strdup(const char *s)
 	char		*dup;
 	size_t		bufsize;
 
+	if (!s)
+		return (NULL);
 	bufsize = (ft_strlen(s) + 1) * sizeof(char);
 	dup = (char *)malloc(bufsize);
 	if (!dup)
