@@ -62,8 +62,7 @@ O = $(patsubst %, ft_%.o, $(CONTENTS))
 HBONUS = $(LIBNAME)_bonus.h
 CBONUS = $(patsubst %, ft_%.c, $(BONUS))
 OBONUS = $(patsubst %, ft_%.o, $(BONUS))
-MAKE_BONUS = 0
-CFLAGS = -Wall -Wextra -Werror -DBONUS=$(MAKE_BONUS)
+CFLAGS = -Wall -Wextra -Werror
 SHELL = /bin/bash  # Unless $(SHELL) variable is redefined, Make uses
 # /bin/sh as its shell command by default. We need to use bash instead so that
 # the ascii escape codes for color output can work.
@@ -73,7 +72,6 @@ DONE = printf "$(GREEN)DONE$(RESET)"
 
 all: $(NAME)
 
-bonus: MAKE_BONUS = 1
 bonus: HEADER += $(HBONUS)
 bonus: C += $(CBONUS)
 bonus: O += $(OBONUS)
