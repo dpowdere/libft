@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2020/11/02 17:34:34 by dpowdere         ###   ########.fr        #
+#    Updated: 2020/11/20 21:43:40 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ re: fclean all
 .SECONDEXPANSION:
 $(NAME): $$(O)
 	@printf "Compose '$@' static library... "
-	@ar rcDs $@ $(O)  # \
+	@ar rcs $@ $(O)  # \
 		# $^ instead of $(O) doesn't work properly in the bonus case. It \
 		# expands to plain $(O) without respect to bonus target-specific \
 		# redefinition of $(O) with $(OBONUS) addition.
