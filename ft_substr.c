@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 12:56:50 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/06 13:45:04 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/20 23:08:24 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	i;
 	char			*substring;
-	size_t			substring_bufsize;
+	size_t			len2;
 
-	substring_bufsize = ft_strlen(s) - start;
-	if (substring_bufsize > len)
-		substring_bufsize = len;
-	substring_bufsize += 1;
-	substring_bufsize *= sizeof(char);
-	substring = (char *)malloc(substring_bufsize);
+	if (!s)
+		return (NULL);
+	len2 = ft_strlen(s);
+	len2 = (len2 > start ? len2 - start : 0);
+	if (len2 > len)
+		len2 = len;
+	substring = (char *)malloc((len2 + 1) * sizeof(char));
 	if (!substring)
 		return (NULL);
 	i = start;
-	while (i - start < len && s[i])
+	while (i - start < len && i - start < len2 && s[i])
 	{
 		substring[i - start] = s[i];
 		++i;
