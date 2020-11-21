@@ -6,13 +6,14 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2020/11/20 21:43:40 by dpowdere         ###   ########.fr        #
+#    Updated: 2020/11/21 21:50:39 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBNAME = libft
 CONTENTS = \
 	atoi \
+	bzero \
 	calloc \
 	isalnum \
 	isalpha \
@@ -37,7 +38,10 @@ CONTENTS = \
 	toupper \
 \
 	itoa \
-	put \
+	putchar_fd \
+	putendl_fd \
+	putnbr_fd \
+	putstr_fd \
 	split \
 	strjoin \
 	strmapi \
