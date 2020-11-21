@@ -6,9 +6,11 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 17:34:19 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/09 17:40:24 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/21 22:18:15 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 #include "libft.h"
 
