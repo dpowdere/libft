@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/21 19:44:50 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/22 17:30:53 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,5 @@ void			ft_lstadd_front(t_list **lst, t_list *new);
 void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
-
-/*
-** Macros inspired by Rust, yet without string formatting:
-** https://doc.rust-lang.org/rust-by-example/hello/print.html
-*/
-# define ft_print(s)	ft_putstr_fd(s, 1)
-# define ft_eprint(s)	ft_putstr_fd(s, 2)
-# define ft_println(s)	ft_putendl_fd(s, 1)
-# define ft_eprintln(s)	ft_putendl_fd(s, 2)
 
 #endif
