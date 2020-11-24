@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 17:54:02 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/24 18:12:15 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 /*
 ** Standard library
+** ================
 */
 char			*ft_strchr(const char *s, int c);
 char			*ft_strdup(const char *s);
@@ -46,6 +47,9 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 void			ft_bzero(void *s, size_t n);
 
 void			*ft_calloc(size_t nmemb, size_t size);
+/*
+** `ft_calloc` returns NULL if either `nmemb` or `size` is zero.
+*/
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
@@ -54,6 +58,7 @@ void			*ft_memset(void *s, int c, size_t n);
 
 /*
 ** Additional functions
+** ====================
 */
 char			*ft_itoa(int n);
 char			*ft_strjoin(char const *s1, char const *s2);
@@ -78,6 +83,7 @@ void			ft_putstr_fd(char *s, int fd);
 
 /*
 ** Bonus functions
+** ===============
 */
 typedef struct	s_list
 {
