@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 19:02:59 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/24 21:19:10 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <errno.h>
 # include <stddef.h>
-# include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -29,7 +28,7 @@ char			*ft_strnstr(const char *haystack, const char *needle,
 							size_t len);
 char			*ft_strrchr(const char *s, int c);
 
-int				ft_atoi(const char *nptr);
+int				ft_atoi(const char *str);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);

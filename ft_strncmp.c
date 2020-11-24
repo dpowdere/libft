@@ -6,12 +6,11 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 09:04:55 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/19 19:24:22 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/24 20:56:13 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

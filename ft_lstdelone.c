@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:46:17 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/09 13:49:47 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/24 19:33:31 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (!lst)
+	if (!lst || !del)
 		return ;
 	lst->next = NULL;
 	(*del)(lst->content);
