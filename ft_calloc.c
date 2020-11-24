@@ -6,9 +6,10 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 07:52:42 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 18:12:22 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/24 19:02:25 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 /*
 ** `ft_calloc` returns NULL if either `nmemb` or `size` is zero.
 */

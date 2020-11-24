@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 18:12:15 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/24 19:02:59 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ char			**ft_split(char const *s, char c);
 ** to deallocate the whole range at once without hassle of deallocating the
 ** individual strings.
 */
-
 
 void			ft_putchar_fd(char c, int fd);
 void			ft_putendl_fd(char *s, int fd);

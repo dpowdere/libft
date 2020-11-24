@@ -6,9 +6,10 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 12:41:28 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 17:54:00 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/24 19:02:34 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 /*
 ** `ft_split` allocates a single contiguous array of memory blocks and
 ** populates them both with an array of pointers to splitted C-strings and
