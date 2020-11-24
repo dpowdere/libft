@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/22 17:30:53 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/24 17:54:02 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,14 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 
 char			**ft_split(char const *s, char c);
+/*
+** `ft_split` allocates a single contiguous array of memory blocks and
+** populates them both with an array of pointers to splitted C-strings and
+** with the strings themselves. So when deallocation is needed, you only have
+** to deallocate the whole range at once without hassle of deallocating the
+** individual strings.
+*/
+
 
 void			ft_putchar_fd(char c, int fd);
 void			ft_putendl_fd(char *s, int fd);
