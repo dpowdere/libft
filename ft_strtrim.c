@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 11:49:51 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/20 23:55:15 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/24 16:29:29 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 		++end;
 	while (end > start && set && ft_strchr(set, *end))
 		--end;
-	trimmed = (char *)malloc((end - start + 2) * sizeof(char));
+	trimmed = (char *)malloc(sizeof(char) * (!*start ? 1 : end - start + 2));
 	if (!trimmed)
 		return (NULL);
-	*(trimmed + (++end - start)) = '\0';
+	++end;
+	if (*start)
+		*(end - start + trimmed) = '\0';
 	while (--end >= start)
-		*(trimmed + (end - start)) = *end;
+		*(end - start + trimmed) = *end;
 	return (trimmed);
 }
