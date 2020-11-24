@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2020/11/22 19:55:34 by dpowdere         ###   ########.fr        #
+#    Updated: 2020/11/24 18:18:12 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,6 @@ NAME = $(LIBNAME).a
 HEADER = $(LIBNAME).h
 C = $(patsubst %, ft_%.c, $(CONTENTS))
 O = $(patsubst %, ft_%.o, $(CONTENTS))
-HBONUS = $(LIBNAME)_bonus.h
 CBONUS = $(patsubst %, ft_%.c, $(BONUS))
 OBONUS = $(patsubst %, ft_%.o, $(BONUS))
 CFLAGS = -Wall -Wextra -Werror
@@ -78,21 +77,20 @@ DONE = printf "$(GREEN)DONE$(RESET)"
 $(NAME): $$(O)
 	@printf "Compose '$@' static library... "
 	@ar rcs $@ $(O)  # \
-		# $^ instead of $(O) doesn't work properly in the bonus case. It \
-		# expands to plain $(O) without respect to bonus target-specific \
-		# redefinition of $(O) with $(OBONUS) addition.
+		# `$^` instead of `$(O)` doesn't work properly in the bonus case. It \
+		# expands to plain `$(O)` without respect to the bonus target-specific \
+		# redefinition of `$(O)` with `$(OBONUS)` addition.
 	@$(DONE)
 
 all: bonus
 
-bonus: HEADER += $(HBONUS)
 bonus: C += $(CBONUS)
 bonus: O += $(OBONUS)
 bonus: $(OBONUS) $(NAME)
 
 clean:
 	@printf "Remove relocatable object files... "
-	@$(RM) $(O) $(OBONUS) $(HEADER).gch $(HBONUS).gch
+	@$(RM) $(O) $(OBONUS) $(HEADER).gch
 	@$(DONE)
 
 fclean: clean
