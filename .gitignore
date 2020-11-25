@@ -1,6 +1,6 @@
 .*
 !.gitignore
-*.[ao]
+*.[aod]
 *.gch
 *.out
 *.swp
