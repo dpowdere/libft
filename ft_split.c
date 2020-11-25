@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 12:41:28 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 19:02:34 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/25 12:48:31 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,53 +20,54 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#define IN_WORD		1
-#define OUT_WORD	0
+#define IN_SEGMENT	1
+#define OUT_SEGMENT	0
 
-static void	ft___count(char const *s, char c, size_t *n_words, size_t *n_chars)
+static void	ft___count(char const *s, char c,
+					size_t *n_segments, size_t *n_chars)
 {
 	int		state;
 
-	*n_words = (size_t)0;
-	*n_chars = (size_t)0;
-	state = OUT_WORD;
+	*n_segments = 0;
+	*n_chars = 0;
+	state = OUT_SEGMENT;
 	while (*s)
 	{
-		if (*s == c && state == IN_WORD)
-			state = OUT_WORD;
+		if (*s == c && state == IN_SEGMENT)
+			state = OUT_SEGMENT;
 		else if (*s != c)
 		{
 			++*n_chars;
-			if (state == OUT_WORD)
+			if (state == OUT_SEGMENT)
 			{
-				state = IN_WORD;
-				++*n_words;
+				state = IN_SEGMENT;
+				++*n_segments;
 			}
 		}
 		++s;
 	}
 }
 
-static void	ft___fill(char const *s, char c, char **mem, size_t n_words)
+static void	ft___fill(char const *s, char c, char **mem, size_t n_segments)
 {
 	char	*write_cursor;
 	int		state;
 
-	*(mem + n_words) = NULL;
-	write_cursor = (char *)(mem + n_words + 1);
-	state = OUT_WORD;
+	*(mem + n_segments) = NULL;
+	write_cursor = (char *)(mem + n_segments + 1);
+	state = OUT_SEGMENT;
 	while (s && *s)
 	{
-		if (*s == c && state == IN_WORD)
+		if (*s == c && state == IN_SEGMENT)
 		{
-			state = OUT_WORD;
+			state = OUT_SEGMENT;
 			*write_cursor++ = '\0';
 		}
-		else if (*s != c && state == IN_WORD)
+		else if (*s != c && state == IN_SEGMENT)
 			*write_cursor++ = *s;
-		else if (*s != c && state == OUT_WORD)
+		else if (*s != c && state == OUT_SEGMENT)
 		{
-			state = IN_WORD;
+			state = IN_SEGMENT;
 			*write_cursor = *s;
 			*mem++ = write_cursor++;
 		}
@@ -76,19 +77,19 @@ static void	ft___fill(char const *s, char c, char **mem, size_t n_words)
 
 char		**ft_split(char const *s, char c)
 {
-	size_t	n_words;
+	size_t	n_segments;
 	size_t	n_chars;
 	char	**string_array;
 
-	n_words = (size_t)0;
-	n_chars = (size_t)0;
+	n_segments = 0;
+	n_chars = 0;
 	if (s)
-		ft___count(s, c, &n_words, &n_chars);
+		ft___count(s, c, &n_segments, &n_chars);
 	string_array = (char **)malloc(
-			(n_words + 1) * sizeof(char *) +
-			(n_chars + n_words) * sizeof(char));
+			(n_segments + 1) * sizeof(char *) +
+			(n_chars + n_segments) * sizeof(char));
 	if (!string_array)
 		return (NULL);
-	ft___fill(s, c, string_array, n_words);
+	ft___fill(s, c, string_array, n_segments);
 	return (string_array);
 }
