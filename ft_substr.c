@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 12:56:50 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/20 23:08:24 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/25 11:29:21 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!substring)
 		return (NULL);
 	i = start;
-	while (i - start < len && i - start < len2 && s[i])
+	while (i - start < len2 && s[i])
 	{
 		substring[i - start] = s[i];
 		++i;
