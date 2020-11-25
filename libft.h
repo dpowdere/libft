@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 21:19:10 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/25 12:28:41 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 void			ft_bzero(void *s, size_t n);
 
 void			*ft_calloc(size_t nmemb, size_t size);
-/*
-** `ft_calloc` returns NULL if either `nmemb` or `size` is zero.
-*/
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);

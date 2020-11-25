@@ -6,13 +6,10 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 07:52:42 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 21:10:57 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/25 12:29:07 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** `ft_calloc` returns NULL if either `nmemb` or `size` is zero.
-*/
 #include <errno.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -26,7 +23,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void		*mem;
 
 	if (nmemb == 0 || size == 0)
-		return (NULL);
+		return (malloc(0));
 	total_size = nmemb * size;
 	if (~(size_t)0 / size < nmemb)
 	{
