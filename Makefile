@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2020/11/26 00:38:35 by dpowdere         ###   ########.fr        #
+#    Updated: 2020/11/26 16:00:14 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ HEADER = $(LIBNAME).h
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c
 AR = ar
-ARFLAGS = rcs
+ARFLAGS = rcus
 
 .PHONY: all bonus clean fclean re
 
@@ -80,7 +80,7 @@ $(NAME): $(OBJS)
 all: bonus
 
 bonus:
-	@ADDBONUS=1 $(MAKE) $(NAME)
+	@$(MAKE) $(NAME) ADDBONUS=1
 
 clean:
 	$(RM) $(OBJS_MANDATORY) $(OBJS_BONUS) $(HEADER).gch
@@ -90,5 +90,31 @@ fclean: clean
 
 re: fclean all
 
-%.o: %.c $HEADER
+%.o: %.c
 	$(CC) $(CFLAGS) -o $@ $<
+
+# Only get targets that depend on libft.h
+# :r!gcc -MM *.c | grep libft.h
+ft_bzero.o: ft_bzero.c libft.h
+ft_calloc.o: ft_calloc.c libft.h
+ft_lstadd_back.o: ft_lstadd_back.c libft.h
+ft_lstadd_front.o: ft_lstadd_front.c libft.h
+ft_lstclear.o: ft_lstclear.c libft.h
+ft_lstdelone.o: ft_lstdelone.c libft.h
+ft_lstiter.o: ft_lstiter.c libft.h
+ft_lstlast.o: ft_lstlast.c libft.h
+ft_lstmap.o: ft_lstmap.c libft.h
+ft_lstnew.o: ft_lstnew.c libft.h
+ft_lstsize.o: ft_lstsize.c libft.h
+ft_putendl_fd.o: ft_putendl_fd.c libft.h
+ft_putnbr_fd.o: ft_putnbr_fd.c libft.h
+ft_putstr_fd.o: ft_putstr_fd.c libft.h
+ft_strchr.o: ft_strchr.c libft.h
+ft_strdup.o: ft_strdup.c libft.h
+ft_strjoin.o: ft_strjoin.c libft.h
+ft_strlcat.o: ft_strlcat.c libft.h
+ft_strlen.o: ft_strlen.c libft.h
+ft_strmapi.o: ft_strmapi.c libft.h
+ft_strnstr.o: ft_strnstr.c libft.h
+ft_strtrim.o: ft_strtrim.c libft.h
+ft_substr.o: ft_substr.c libft.h
