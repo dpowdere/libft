@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:33:00 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/19 18:24:36 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/26 16:21:52 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	i;
 	size_t	j;
 
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
+	dst_len = (dst ? ft_strlen(dst) : 0);
+	src_len = (src ? ft_strlen(src) : 0);
 	if (size > 0 && dst_len < size)
 	{
 		i = dst_len;
