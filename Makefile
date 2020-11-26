@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2020/11/26 16:00:14 by dpowdere         ###   ########.fr        #
+#    Updated: 2020/11/26 16:14:05 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ HEADER = $(LIBNAME).h
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c
 AR = ar
-ARFLAGS = rcus
+ARFLAGS = rcusv
 
 .PHONY: all bonus clean fclean re
 
