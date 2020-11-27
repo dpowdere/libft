@@ -6,90 +6,76 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 12:41:28 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/27 12:22:58 by dpowdere         ###   ########.fr       */
+/*   Updated: 2020/11/27 15:03:37 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** `ft_split` allocates a single contiguous array of memory blocks and
-** populates them both with an array of pointers to splitted C-strings and
-** with the strings themselves. So when deallocation is needed, you only have
-** to deallocate the whole range at once without hassle of deallocating the
-** individual strings.
-*/
 #include <stddef.h>
 #include <stdlib.h>
 
-#define IN_SEGMENT		1
-#define IN_SEPARATOR	0
+#include "libft.h"
 
-static void	ft___count(char const *s, char c,
-					size_t *n_segments, size_t *n_chars)
+static int	ft___count_segments(char const *s, char c)
 {
-	int		where;
+	int	n_segments;
+	int	i;
 
-	*n_segments = 0;
-	*n_chars = 0;
-	where = IN_SEPARATOR;
-	while (*s)
-	{
-		if (*s == c && where == IN_SEGMENT)
-			where = IN_SEPARATOR;
-		else if (*s != c)
-		{
-			++*n_chars;
-			if (where == IN_SEPARATOR)
-			{
-				where = IN_SEGMENT;
-				++*n_segments;
-			}
-		}
-		++s;
-	}
+	n_segments = 0;
+	i = -1;
+	while (s && s[++i])
+		if ((s[i] == c && s[i + 1] != c) || (i == 0 && s[i] != c))
+			++n_segments;
+	return (n_segments);
 }
 
-static void	ft___fill(char const *s, char c, char **mem, size_t n_segments)
+static void	ft___free_array(char **arr)
 {
-	char	*write_cursor;
-	int		where;
+	int i;
 
-	*(mem + n_segments) = NULL;
-	write_cursor = (char *)(mem + n_segments + 1);
-	where = IN_SEPARATOR;
-	while (s && *s)
+	i = 0;
+	while (arr[i])
+		free(arr[i]);
+	free(arr);
+}
+
+static char	**ft___populate_array(char **arr, char const *s, char c)
+{
+	int		i;
+	char	*e;
+	char	*p;
+
+	i = -1;
+	while (*s)
 	{
-		if (*s == c && where == IN_SEGMENT)
+		if (*s++ == c)
+			continue ;
+		if (!(e = ft_strchr(--s, c)))
+			p = ft_strdup(s);
+		else
+			p = ft_substr(s, 0, e - s);
+		if (!(arr[++i] = p))
 		{
-			where = IN_SEPARATOR;
-			*write_cursor++ = '\0';
+			ft___free_array(arr);
+			return (NULL);
 		}
-		else if (*s != c && where == IN_SEGMENT)
-			*write_cursor++ = *s;
-		else if (*s != c && where == IN_SEPARATOR)
-		{
-			where = IN_SEGMENT;
-			*write_cursor = *s;
-			*mem++ = write_cursor++;
-		}
-		++s;
+		if (!e)
+			break ;
+		s = e;
 	}
+	arr[++i] = NULL;
+	return (arr);
 }
 
 char		**ft_split(char const *s, char c)
 {
-	size_t	n_segments;
-	size_t	n_chars;
-	char	**string_array;
+	char	**arr;
+	int		n_segments;
 
-	n_segments = 0;
-	n_chars = 0;
-	if (s)
-		ft___count(s, c, &n_segments, &n_chars);
-	string_array = (char **)malloc(
-			(n_segments + 1) * sizeof(char *) +
-			(n_chars + n_segments) * sizeof(char));
-	if (!string_array)
+	if (!s)
 		return (NULL);
-	ft___fill(s, c, string_array, n_segments);
-	return (string_array);
+	n_segments = ft___count_segments(s, c);
+	arr = (char **)malloc((n_segments + 1) * sizeof(char *));
+	if (!arr)
+		return (NULL);
+	return (ft___populate_array(arr, s, c));
 }

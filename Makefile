@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2020/11/26 16:14:05 by dpowdere         ###   ########.fr        #
+#    Updated: 2020/11/27 14:44:08 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,6 @@ ifdef ADDBONUS
 endif
 
 NAME = $(LIBNAME).a
-HEADER = $(LIBNAME).h
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c
 AR = ar
@@ -83,7 +82,7 @@ bonus:
 	@$(MAKE) $(NAME) ADDBONUS=1
 
 clean:
-	$(RM) $(OBJS_MANDATORY) $(OBJS_BONUS) $(HEADER).gch
+	$(RM) *.o *.gch
 
 fclean: clean
 	$(RM) $(NAME)
@@ -109,6 +108,7 @@ ft_lstsize.o: ft_lstsize.c libft.h
 ft_putendl_fd.o: ft_putendl_fd.c libft.h
 ft_putnbr_fd.o: ft_putnbr_fd.c libft.h
 ft_putstr_fd.o: ft_putstr_fd.c libft.h
+ft_split.o: ft_split.c libft.h
 ft_strchr.o: ft_strchr.c libft.h
 ft_strdup.o: ft_strdup.c libft.h
 ft_strjoin.o: ft_strjoin.c libft.h
