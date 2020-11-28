@@ -63,6 +63,17 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 
 char			**ft_split(char const *s, char c);
+char *const		*ft_split_const(char const *s, char c);
+/*
+** `ft_split` allocates memory several times -- once per each splitted segment
+** of the initial string and once for the array of pointers to strings.
+**
+** `ft_split_const` allocates a single contiguous array of memory blocks and
+** populates them both with an array of pointers to splitted C-strings and
+** with the strings themselves. So when deallocation is needed, you only have
+** to deallocate the whole range at once without hassle of deallocating the
+** individual strings.
+*/
 
 void			ft_putchar_fd(char c, int fd);
 void			ft_putendl_fd(char *s, int fd);
