@@ -75,7 +75,7 @@ static void	ft___fill(char const *s, char c, char **mem, size_t n_segments)
 	}
 }
 
-char *const	*ft_split(char const *s, char c)
+char *const	*ft_split_const(char const *s, char c)
 {
 	size_t	n_segments;
 	size_t	n_chars;
