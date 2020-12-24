@@ -79,17 +79,20 @@ char *const	*ft_split_const(char const *s, char c)
 {
 	size_t	n_segments;
 	size_t	n_chars;
+	size_t	size;
 	char	**string_array;
 
 	n_segments = 0;
 	n_chars = 0;
 	if (s)
 		ft___count(s, c, &n_segments, &n_chars);
-	string_array = (char **)malloc(
-			(n_segments + 1) * sizeof(char *) +
-			(n_chars + n_segments) * sizeof(char));
+	size = (n_segments + 1) * sizeof(char *)
+			+ (n_chars + n_segments) * sizeof(char);
+	string_array = (char **)malloc(size);
 	if (!string_array)
 		return (NULL);
+	while (size > 0)
+		((char *)string_array)[--size] = '\0';
 	ft___fill(s, c, string_array, n_segments);
 	return ((char *const *)string_array);
 }
