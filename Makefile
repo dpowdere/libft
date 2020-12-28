@@ -63,14 +63,24 @@ OBJS_MANDATORY = $(CONTENTS:.c=.o)
 OBJS_BONUS = $(BONUS:.c=.o)
 OBJS = $(OBJS_MANDATORY)
 ifdef ADDBONUS
-	OBJS += $(OBJS_BONUS)
+  OBJS += $(OBJS_BONUS)
 endif
 
 NAME = $(LIBNAME).a
+SYSTEM = $(shell uname)
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c
+
 AR = ar
 ARFLAGS = rcusv
+ifneq ($(SYSTEM), Darwin)
+  ifeq ($(SYSTEM), Linux)
+    ARFLAGS = rcuUsv
+  else
+    ARFLAGS = rcsv
+  endif
+endif
 
 .PHONY: all bonus clean fclean re
 
