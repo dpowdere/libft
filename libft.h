@@ -87,6 +87,15 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 
+/*
+** Macros inspired by Rust, yet without string formating:
+** https://doc.rust-lang.org/rust-by-example/hello/print.html
+*/
+# define ft_print(s)	ft_putstr_fd(s, 1)
+# define ft_eprint(s)	ft_putstr_fd(s, 2)
+# define ft_println(s)	ft_putendl_fd(s, 1)
+# define ft_eprintln(s)	ft_purendl_fd(s, 2)
+
 size_t			ft_wcstombs_len(const wchar_t *s);
 int				ft_wctomb_len(wchar_t wc);
 
