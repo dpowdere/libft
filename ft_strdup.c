@@ -6,15 +6,13 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 12:17:34 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/06 12:41:21 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/01/04 23:31:26 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
 #include <stddef.h>
 #include <stdlib.h>
-
-#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {
@@ -24,13 +22,16 @@ char	*ft_strdup(const char *s)
 
 	if (!s)
 		return (NULL);
-	bufsize = (ft_strlen(s) + 1) * sizeof(char);
+	bufsize = 0;
+	while (s[bufsize++])
+		;
 	dup = (char *)malloc(bufsize);
 	if (!dup)
 	{
 		errno = ENOMEM;
 		return (NULL);
 	}
-	(void)ft_strlcpy(dup, s, bufsize);
+	while (bufsize-- > 0)
+		dup[bufsize] = s[bufsize];
 	return (dup);
 }
