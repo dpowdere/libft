@@ -6,17 +6,17 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/27 12:57:06 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/01/02 20:47:01 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <errno.h>
 # include <stddef.h>
-# include <stdlib.h>
+# include <stdint.h>
 # include <unistd.h>
+# include <wchar.h>
 
 /*
 ** Standard library
@@ -38,10 +38,13 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+int				ft_wctomb(char *s, wchar_t wc);
 
 size_t			ft_strlen(const char *s);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);
+size_t			ft_wcslen(const wchar_t *s);
+size_t			ft_wcstombs(char *dst, const wchar_t *src, size_t n);
 
 void			ft_bzero(void *s, size_t n);
 
@@ -80,9 +83,12 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 
+size_t			ft_wcstombs_len(const wchar_t *s);
+int				ft_wctomb_len(wchar_t wc);
+
 /*
-** Bonus functions
-** ===============
+** Functions to work with linked lists
+** ===================================
 */
 typedef struct	s_list
 {
@@ -104,7 +110,3 @@ void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 
 #endif
-
-/*
-** vim: set filetype=c :
-*/
