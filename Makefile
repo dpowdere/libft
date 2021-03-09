@@ -6,12 +6,12 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2020/11/27 14:44:08 by dpowdere         ###   ########.fr        #
+#    Updated: 2021/01/02 20:44:31 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBNAME = libft
-CONTENTS = \
+LIBNAME := libft
+CONTENTS := \
 	ft_atoi.c \
 	ft_bzero.c \
 	ft_calloc.c \
@@ -36,8 +36,13 @@ CONTENTS = \
 	ft_strrchr.c \
 	ft_tolower.c \
 	ft_toupper.c \
+	ft_wcslen.c \
+	ft_wcstombs.c \
+	ft_wctomb.c \
+	ft_write.c \
 \
 	ft_itoa.c \
+	ft_jbase.c \
 	ft_putchar_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
@@ -47,8 +52,10 @@ CONTENTS = \
 	ft_strjoin.c \
 	ft_strmapi.c \
 	ft_strtrim.c \
-	ft_substr.c
-BONUS = \
+	ft_substr.c \
+	ft_wcstombs_len.c \
+	ft_wctomb_len.c \
+\
 	ft_lstadd_back.c \
 	ft_lstadd_front.c \
 	ft_lstclear.c \
@@ -59,73 +66,45 @@ BONUS = \
 	ft_lstnew.c \
 	ft_lstsize.c
 
-OBJS_MANDATORY = $(CONTENTS:.c=.o)
-OBJS_BONUS = $(BONUS:.c=.o)
-OBJS = $(OBJS_MANDATORY)
-ifdef ADDBONUS
-  OBJS += $(OBJS_BONUS)
+CC := gcc
+AR := ar
+CFLAGS := -Wall -Wextra -Werror -MMD -MP -c
+ARFLAGS := rcsv
+
+NAME := $(LIBNAME).a
+OBJS := $(CONTENTS:.c=.o)
+DEPS := $(OBJS:.o=.d))
+
+SYSTEM := $(shell $(CC) -dumpmachine)
+
+# if on macOS
+ifneq ($(findstring darwin,$(SYSTEM)),)
+  ARFLAGS := rcusv
 endif
 
-NAME = $(LIBNAME).a
-SYSTEM = $(shell uname)
-
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c
-
-AR = ar
-ARFLAGS = rcusv
-ifneq ($(SYSTEM), Darwin)
-  ifeq ($(SYSTEM), Linux)
-    ARFLAGS = rcuUsv
-  else
-    ARFLAGS = rcsv
-  endif
+# if on Linux
+ifneq ($(findstring linux,$(SYSTEM)),)
+  ARFLAGS := rcuUsv
 endif
 
-.PHONY: all bonus clean fclean re
+################################################################################
+
+.PHONY: all clean fclean re
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
-all: bonus
-
-bonus:
-	@$(MAKE) $(NAME) ADDBONUS=1
-
-clean:
-	$(RM) *.o *.gch
-
-fclean: clean
-	$(RM) $(NAME)
-
-re: fclean all
-
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-# Only get targets that depend on libft.h
-# :r!gcc -MM *.c | grep libft.h
-ft_bzero.o: ft_bzero.c libft.h
-ft_calloc.o: ft_calloc.c libft.h
-ft_lstadd_back.o: ft_lstadd_back.c libft.h
-ft_lstadd_front.o: ft_lstadd_front.c libft.h
-ft_lstclear.o: ft_lstclear.c libft.h
-ft_lstdelone.o: ft_lstdelone.c libft.h
-ft_lstiter.o: ft_lstiter.c libft.h
-ft_lstlast.o: ft_lstlast.c libft.h
-ft_lstmap.o: ft_lstmap.c libft.h
-ft_lstnew.o: ft_lstnew.c libft.h
-ft_lstsize.o: ft_lstsize.c libft.h
-ft_putendl_fd.o: ft_putendl_fd.c libft.h
-ft_putnbr_fd.o: ft_putnbr_fd.c libft.h
-ft_putstr_fd.o: ft_putstr_fd.c libft.h
-ft_split.o: ft_split.c libft.h
-ft_strchr.o: ft_strchr.c libft.h
-ft_strdup.o: ft_strdup.c libft.h
-ft_strjoin.o: ft_strjoin.c libft.h
-ft_strlcat.o: ft_strlcat.c libft.h
-ft_strlen.o: ft_strlen.c libft.h
-ft_strmapi.o: ft_strmapi.c libft.h
-ft_strnstr.o: ft_strnstr.c libft.h
-ft_strtrim.o: ft_strtrim.c libft.h
-ft_substr.o: ft_substr.c libft.h
+all: $(NAME)
+
+clean:
+	$(RM) *.o *.d *.gch
+
+fclean: clean
+	$(RM) $(NAME) *.dSYM
+
+re: fclean all
+
+-include $(DEPS)
