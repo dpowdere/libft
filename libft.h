@@ -19,8 +19,8 @@
 # include <wchar.h>
 
 /*
-** Standard library
-** ================
+** Standard library or syscalls
+** ============================
 */
 char			*ft_strchr(const char *s, int c);
 char			*ft_strdup(const char *s);
@@ -54,6 +54,8 @@ void			*ft_memchr(const void *s, int c, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
+
+ssize_t			ft_write(int fd, const void *buf, size_t count);
 
 /*
 ** Additional functions
