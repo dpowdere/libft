@@ -76,7 +76,7 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 
 char			**ft_split(char const *s, char c);
-char *const		*ft_split_const(char const *s, char c);
+char *const		*ft_split_const(char const *s, char const *separator_chars);
 /*
 ** `ft_split` allocates memory several times -- once per each splitted segment
 ** of the initial string and once for the array of pointers to strings.
