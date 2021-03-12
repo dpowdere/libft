@@ -65,6 +65,7 @@ ssize_t			ft_write(int fd, const void *buf, size_t count);
 ** ====================
 */
 int				ft_get_next_line(int fd, char **line);
+int				ft_str_index(const char *s, int c);
 int				ft_str_endswith(const char *s, const char *suffix);
 int				ft_str_startswith(const char *s, const char *prefix);
 int				ft_strtoi(const char *nptr, char **endptr, int base);

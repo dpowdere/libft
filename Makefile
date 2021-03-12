@@ -57,6 +57,7 @@ CONTENTS := \
 	ft_strmapi.c \
 	ft_strtoi.c \
 	ft_strtrim.c \
+	ft_str_index.c \
 	ft_str_xwith.c \
 	ft_substr.c \
 	ft_wcstombs_len.c \
