@@ -34,6 +34,7 @@ CONTENTS := \
 	ft_strncmp.c \
 	ft_strnstr.c \
 	ft_strrchr.c \
+	ft_strtod.c \
 	ft_tolower.c \
 	ft_toupper.c \
 	ft_wcslen.c \
