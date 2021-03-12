@@ -55,6 +55,7 @@ CONTENTS := \
 	ft_split_const.c \
 	ft_strjoin.c \
 	ft_strmapi.c \
+	ft_strtoi.c \
 	ft_strtrim.c \
 	ft_str_xwith.c \
 	ft_substr.c \
