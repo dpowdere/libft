@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/03/11 23:22:54 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/03/12 03:28:26 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void			ft_putstr_fd(char *s, int fd);
 # define ft_println(s)	ft_putendl_fd(s, 1)
 # define ft_eprintln(s)	ft_putendl_fd(s, 2)
 
+size_t			ft_ptrarr_len(void *const *arr);
 size_t			ft_wcstombs_len(const wchar_t *s);
 int				ft_wctomb_len(wchar_t wc);
 
