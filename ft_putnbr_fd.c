@@ -6,13 +6,11 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 21:48:12 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/21 21:48:40 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/09/30 21:40:12 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
