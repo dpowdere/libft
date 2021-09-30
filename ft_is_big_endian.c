@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_is_big_endian.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/02 20:03:49 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 19:18:09 by dpowdere         ###   ########.fr       */
+/*   Created: 2021/03/24 01:14:56 by dpowdere          #+#    #+#             */
+/*   Updated: 2021/03/24 01:20:31 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+int	ft_is_big_endian(void)
 {
-	int	sign;
-	int	n;
+	const int	x = 1;
 
-	sign = 1;
-	n = 0;
-	while (*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r'
-		|| *str == '\t' || *str == '\v')
-		++str;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign = -1;
-		++str;
-	}
-	while (*str >= '0' && *str <= '9')
-		n = n * 10 + (*str++ - '0') * sign;
-	return (n);
+	return (!*(unsigned char *)&x);
 }

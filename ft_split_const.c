@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 12:41:28 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/27 12:22:58 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/09/30 21:27:15 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char *const	*ft_split_const(const char *s, const char *separator_chars)
 	if (s)
 		ft___count(s, separator_chars, &n_segments, &n_chars);
 	size = (n_segments + 1) * sizeof(char *)
-			+ (n_chars + n_segments) * sizeof(char);
+		+ (n_chars + n_segments) * sizeof(char);
 	string_array = (char **)malloc(size);
 	if (!string_array)
 		return (NULL);

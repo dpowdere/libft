@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/02 20:03:49 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/24 19:18:09 by dpowdere         ###   ########.fr       */
+/*   Created: 2021/03/12 13:05:51 by dpowdere          #+#    #+#             */
+/*   Updated: 2021/03/12 13:11:19 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	int	sign;
-	int	n;
+#include <stddef.h>
+#include <stdlib.h>
 
-	sign = 1;
-	n = 0;
-	while (*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r'
-		|| *str == '\t' || *str == '\v')
-		++str;
-	if (*str == '+' || *str == '-')
+void	ft_free_null(void **p)
+{
+	if (p != NULL && *p != NULL)
 	{
-		if (*str == '-')
-			sign = -1;
-		++str;
+		free((void *)*p);
+		*p = NULL;
 	}
-	while (*str >= '0' && *str <= '9')
-		n = n * 10 + (*str++ - '0') * sign;
-	return (n);
 }

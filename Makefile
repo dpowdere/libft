@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2021/01/02 20:44:31 by dpowdere         ###   ########.fr        #
+#    Updated: 2021/03/12 13:12:57 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ CONTENTS := \
 	ft_strnstr.c \
 	ft_strrchr.c \
 	ft_strtod.c \
+	ft_strtof.c \
 	ft_tolower.c \
 	ft_toupper.c \
 	ft_wcslen.c \
@@ -43,7 +44,9 @@ CONTENTS := \
 	ft_wctomb.c \
 	ft_write.c \
 \
+	ft_free_null.c \
 	ft_get_next_line.c \
+	ft_is_big_endian.c \
 	ft_itoa.c \
 	ft_jbase.c \
 	ft_ptrarr_len.c \
@@ -77,6 +80,9 @@ CC := gcc
 AR := ar
 CFLAGS := -Wall -Wextra -Werror -MMD -MP -c
 ARFLAGS := rcsv
+ifdef DEBUG
+  CFLAGS += -g3
+endif
 
 NAME := $(LIBNAME).a
 OBJS := $(CONTENTS:.c=.o)

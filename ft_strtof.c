@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtod.c                                        :+:      :+:    :+:   */
+/*   ft_strtof.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 01:14:57 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/03/11 01:15:05 by dpowdere         ###   ########.fr       */
+/*   Created: 2021/04/23 17:34:17 by dpowdere          #+#    #+#             */
+/*   Updated: 2021/04/23 17:35:07 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static inline void	ft__calc_sign(const char **ptr, int *sign)
 	++*ptr;
 }
 
-static inline void	ft__calc_frac(const char **ptr, int *frac, double *n)
+static inline void	ft__calc_frac(const char **ptr, int *frac, float *n)
 {
 	++*ptr;
 	while (**ptr >= '0' && **ptr <= '9')
@@ -40,7 +40,7 @@ static inline void	ft__calc_exp(const char **ptr, int *exp, int *exp_sign)
 	*exp *= *exp_sign;
 }
 
-static inline void	ft__calc_final_n(double *n, int frac, int exp)
+static inline void	ft__calc_final_n(float *n, int frac, int exp)
 {
 	int	floating_point_shift;
 
@@ -61,20 +61,20 @@ static inline void	ft__calc_final_n(double *n, int frac, int exp)
 }
 
 /*
-** A naive imprecise implementation of `strtod` function
+** A naive imprecise implementation of `strtof` function
 ** without check if the correct value would cause overflow
 ** or underflow and without much care of roundoff errors.
 */
 
-double	ft_strtod(const char *nptr, char **endptr)
+float	ft_strtof(const char *nptr, char **endptr)
 {
-	double	n;
+	float	n;
 	int		frac;
 	int		exp;
 	int		sign;
 	int		exp_sign;
 
-	n = +0.0;
+	n = +0.0f;
 	frac = 0;
 	exp = 0;
 	sign = 1;

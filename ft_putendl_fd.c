@@ -14,10 +14,24 @@
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+#define STDOUT	1
+#define STDERR	2
+
+void	ft_putendl_fd(const char *s, int fd)
 {
-	if (fd < 0 || !s)
+	if (fd < 0)
 		return ;
-	write(fd, s, ft_strlen(s));
+	if (s)
+		write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
+}
+
+void	ft_println(const char *s)
+{
+	ft_putendl_fd(s, STDOUT);
+}
+
+void	ft_eprintln(const char *s)
+{
+	ft_putendl_fd(s, STDERR);
 }
