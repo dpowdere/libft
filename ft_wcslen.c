@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_wcslen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/06 12:17:34 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/01/04 23:31:26 by dpowdere         ###   ########.fr       */
+/*   Created: 2021/01/24 19:40:35 by dpowdere          #+#    #+#             */
+/*   Updated: 2021/01/24 19:42:46 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
 #include <stddef.h>
-#include <stdlib.h>
+#include <wchar.h>
 
-char	*ft_strdup(const char *s)
+size_t	ft_wcslen(const wchar_t *s)
 {
-	extern int	errno;
-	char		*dup;
-	size_t		bufsize;
+	size_t len;
 
-	if (!s)
-		return (NULL);
-	bufsize = 0;
-	while (s[bufsize++])
-		;
-	dup = (char *)malloc(bufsize);
-	if (!dup)
-	{
-		errno = ENOMEM;
-		return (NULL);
-	}
-	while (bufsize-- > 0)
-		dup[bufsize] = s[bufsize];
-	return (dup);
+	len = 0;
+	while (s[len] != L'\0')
+		++len;
+	return (len);
 }

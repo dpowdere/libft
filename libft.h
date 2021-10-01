@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/11/27 12:57:06 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/01/02 20:47:01 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,9 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 
-#endif
-
 /*
-** vim: set filetype=c :
+** Other functions
 */
+ssize_t	ft_write(int fd, const void *buf, size_t count);
+
+#endif

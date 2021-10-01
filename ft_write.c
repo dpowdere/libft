@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_write.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/06 12:17:34 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/01/04 23:31:26 by dpowdere         ###   ########.fr       */
+/*   Created: 2021/01/02 20:42:42 by dpowdere          #+#    #+#             */
+/*   Updated: 2021/01/02 20:52:47 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
-#include <stddef.h>
-#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-char	*ft_strdup(const char *s)
+ssize_t	ft_write(int fd, const void *buf, size_t size)
 {
-	extern int	errno;
-	char		*dup;
-	size_t		bufsize;
+	ssize_t	partial_size;
 
-	if (!s)
-		return (NULL);
-	bufsize = 0;
-	while (s[bufsize++])
-		;
-	dup = (char *)malloc(bufsize);
-	if (!dup)
+	while ((partial_size = write(fd, buf, size)) >= 0
+			&& (size_t)partial_size < size)
 	{
-		errno = ENOMEM;
-		return (NULL);
+		buf = (unsigned char *)buf + partial_size;
+		size -= partial_size;
 	}
-	while (bufsize-- > 0)
-		dup[bufsize] = s[bufsize];
-	return (dup);
+	return (partial_size);
 }
