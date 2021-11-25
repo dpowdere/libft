@@ -76,10 +76,12 @@ CONTENTS := \
 	ft_lstnew.c \
 	ft_lstsize.c
 
-CC := gcc
 AR := ar
-CFLAGS := -Wall -Wextra -Werror -MMD -MP -c
 ARFLAGS := rcsv
+
+CC := gcc
+CFLAGS := -Wall -Wextra -Werror
+CPPFLAGS := -MMD -MP
 ifdef DEBUG
   CFLAGS += -g3
 endif
@@ -88,31 +90,19 @@ NAME := $(LIBNAME).a
 OBJS := $(CONTENTS:.c=.o)
 DEPS := $(OBJS:.o=.d))
 
-SYSTEM := $(shell $(CC) -dumpmachine)
-
-# if on macOS
-ifneq ($(findstring darwin,$(SYSTEM)),)
-  ARFLAGS := rcusv
-endif
-
-# if on Linux
-ifneq ($(findstring linux,$(SYSTEM)),)
-  ARFLAGS := rcuUsv
-endif
-
 ################################################################################
 
 .PHONY: all clean fclean re
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+	$(AR) $(ARFLAGS) $@ $?
 
 %.o: %.c
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
 ft_get_next_line.o: ft_get_next_line.c ft_get_next_line_utils.c \
                     ft_get_next_line.h
-	$(CC) $(CFLAGS) -include $(word 2,$^) -o $@ $<
+	$(CC) $(CPPFLAGS) -include $(word 2,$^) $(CFLAGS) -c -o $@ $<
 
 all: $(NAME)
 
