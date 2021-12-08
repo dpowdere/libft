@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/12/08 17:51:19 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/12/08 17:59:11 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,11 +150,9 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 void		ft_lstiter_ix(t_list *lst, void (*f)(void *, int ix, int is_last));
 void		ft_lstpipeline(t_list **lst, t_list *(*pipeline)(t_list *));
 void		ft_lstpipeline_xd(t_list **lst,
-						t_list *(*pipeline)(t_list *, void *),
-						void *extra_data);
+				t_list *(*pipeline)(t_list *, void *), void *extra_data);
 void		ft_lststream(t_list **lst, t_list *(*stream_process)(t_list **));
 void		ft_lststream_xd(t_list **lst,
-						t_list *(*stream_process)(t_list **, void *),
-						void *extra_data);
+				t_list *(*stream_process)(t_list **, void *), void *extra_data);
 
 #endif
