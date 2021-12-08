@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstdetach.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/12 13:05:51 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/12/08 17:56:42 by dpowdere         ###   ########.fr       */
+/*   Created: 2021/10/31 13:09:00 by dpowdere          #+#    #+#             */
+/*   Updated: 2021/12/08 17:19:51 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include <stdlib.h>
 
-void	ft_free_null(void **p)
+#include "libft.h"
+
+t_list	*ft_lstdetach(t_list **lst, t_list *detachable_link)
 {
-	if (p != NULL)
+	t_list	*cursor;
+
+	if (*lst == detachable_link)
 	{
-		free((void *)*p);
-		*p = NULL;
+		*lst = NULL;
+		return (detachable_link);
 	}
+	cursor = *lst;
+	while (cursor)
+	{
+		if (cursor->next == detachable_link)
+		{
+			cursor->next = NULL;
+			break ;
+		}
+		cursor = cursor->next;
+	}
+	return (detachable_link);
 }

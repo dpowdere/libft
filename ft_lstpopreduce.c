@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstpopreduce.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/12 13:05:51 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/12/08 17:56:42 by dpowdere         ###   ########.fr       */
+/*   Created: 2021/12/08 17:40:58 by dpowdere          #+#    #+#             */
+/*   Updated: 2021/12/08 17:45:00 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
+#include "libft.h"
 
-void	ft_free_null(void **p)
+void	*ft_lstpopreduce(t_list **lst, void *init, void *(*f)(void *, void *))
 {
-	if (p != NULL)
-	{
-		free((void *)*p);
-		*p = NULL;
-	}
+	while (*lst)
+		init = f(init, ft_lstpop(lst));
+	return (init);
 }

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstpop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/12 13:05:51 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/12/08 17:56:42 by dpowdere         ###   ########.fr       */
+/*   Created: 2021/12/08 17:34:21 by dpowdere          #+#    #+#             */
+/*   Updated: 2021/12/08 17:52:01 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include <stdlib.h>
 
-void	ft_free_null(void **p)
+#include "libft.h"
+
+void	*ft_lstpop(t_list **lst)
 {
-	if (p != NULL)
-	{
-		free((void *)*p);
-		*p = NULL;
-	}
+	void	*content;
+	t_list	*elem;
+
+	elem = *lst;
+	content = elem->content;
+	*lst = elem->next;
+	free(elem);
+	return (content);
 }

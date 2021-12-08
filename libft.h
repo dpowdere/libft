@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 17:14:56 by dpowdere          #+#    #+#             */
-/*   Updated: 2021/03/24 01:20:19 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/12/08 17:51:19 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,37 @@ typedef struct s_list
 
 int			ft_lstsize(t_list *lst);
 
+t_list		*ft_lstconv(t_list *lst, void *(*f)(void *));
+t_list		*ft_lstconv_xd(t_list *lst, void *(*f)(void *, void *),
+				void *extra_data);
+t_list		*ft_lstdetach(t_list **lst, t_list *detachable_link);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list		*ft_lstnew(void *content);
+t_list		*ft_lstpopconv(t_list **lst, void *(*f)(void *));
+t_list		*ft_lstpopconv_xd(t_list **lst, void *(*f)(void *, void *),
+				void *extra_data);
+
+void		*ft_lstpop(t_list **lst);
+void		*ft_lstpopreduce(t_list **lst,
+				void *initial, void *(*f)(void *, void *));
+void		*ft_lstreduce(t_list *lst,
+				void *initial, void *(*f)(void *, void *));
 
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
+void		ft_lstinsert(t_list **current, t_list *new_next);
 void		ft_lstiter(t_list *lst, void (*f)(void *));
+void		ft_lstiter_ix(t_list *lst, void (*f)(void *, int ix, int is_last));
+void		ft_lstpipeline(t_list **lst, t_list *(*pipeline)(t_list *));
+void		ft_lstpipeline_xd(t_list **lst,
+						t_list *(*pipeline)(t_list *, void *),
+						void *extra_data);
+void		ft_lststream(t_list **lst, t_list *(*stream_process)(t_list **));
+void		ft_lststream_xd(t_list **lst,
+						t_list *(*stream_process)(t_list **, void *),
+						void *extra_data);
 
 #endif

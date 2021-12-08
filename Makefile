@@ -6,7 +6,7 @@
 #    By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 17:22:01 by dpowdere          #+#    #+#              #
-#    Updated: 2021/03/12 13:12:57 by dpowdere         ###   ########.fr        #
+#    Updated: 2021/12/08 17:42:26 by dpowdere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,15 +69,23 @@ CONTENTS := \
 	ft_lstadd_back.c \
 	ft_lstadd_front.c \
 	ft_lstclear.c \
+	ft_lstconv.c \
 	ft_lstdelone.c \
+	ft_lstdetach.c \
+	ft_lstinsert.c \
 	ft_lstiter.c \
 	ft_lstlast.c \
 	ft_lstmap.c \
 	ft_lstnew.c \
+	ft_lstpipeline.c \
+	ft_lstpop.c \
+	ft_lstpopconv.c \
+	ft_lstpopreduce.c \
+	ft_lstreduce.c \
 	ft_lstsize.c
 
 AR := ar
-ARFLAGS := rcsv
+ARFLAGS := crs
 
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
