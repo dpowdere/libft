@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 11:29:30 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/12/19 19:42:20 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/12/09 17:20:46 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,28 @@ int	ft_get_next_line(int fd, char **line)
 		return (GNL_ERROR);
 	if (stash.fd != fd)
 	{
-		ft_reset(&stash, RESET_ALL_TO_DEFAULT);
+		gnl_reset(&stash, RESET_ALL_TO_DEFAULT);
 		stash.fd = fd;
 	}
-	if (stash.tail == NULL && ft_add_tail(&stash) == FAIL)
+	if (stash.tail == NULL && gnl_add_tail(&stash) == FAIL)
 		return (GNL_ERROR);
-	while (ft_find_nl(&stash) == NOT_FOUND)
+	while (gnl_find_nl(&stash) == NOT_FOUND)
 	{
-		if (ft_add_tail(&stash) == FAIL)
+		if (gnl_add_tail(&stash) == FAIL)
 		{
-			ft_reset(&stash, RESET_ALL_TO_DEFAULT);
+			gnl_reset(&stash, RESET_ALL_TO_DEFAULT);
 			return (GNL_ERROR);
 		}
 	}
 	*line = NULL;
-	if (ft_get_line_from_stash(&stash, line) == FAIL)
+	if (gnl_get_line_from_stash(&stash, line) == FAIL)
 		return (GNL_ERROR);
 	if (*line == NULL)
 		return (GNL_EOF);
 	return (GNL_LINE);
 }
 
-static void	ft_reset(struct s_stash *stash, int kind)
+void	gnl_reset(struct s_stash *stash, int kind)
 {
 	struct s_part	*tmp;
 
@@ -65,7 +65,7 @@ static void	ft_reset(struct s_stash *stash, int kind)
 	stash->tail = NULL;
 }
 
-static int	ft_add_tail(struct s_stash *stash)
+int	gnl_add_tail(struct s_stash *stash)
 {
 	struct s_part	*tail;
 
@@ -90,7 +90,7 @@ static int	ft_add_tail(struct s_stash *stash)
 	return (SUCCESS);
 }
 
-static int	ft_find_nl(struct s_stash *stash)
+int	gnl_find_nl(struct s_stash *stash)
 {
 	if (stash->head->next == NULL)
 		stash->end = stash->start;
@@ -107,25 +107,25 @@ static int	ft_find_nl(struct s_stash *stash)
 	return (NOT_FOUND);
 }
 
-static int	ft_get_line_from_stash(struct s_stash *stash, char **line)
+int	gnl_get_line_from_stash(struct s_stash *stash, char **line)
 {
 	size_t	size;
 
 	if (stash->head->next == NULL && stash->tail->size == READ_EOF)
 	{
 		*line = NULL;
-		ft_reset(stash, RESET_ALL_TO_DEFAULT);
+		gnl_reset(stash, RESET_ALL_TO_DEFAULT);
 		return (SUCCESS);
 	}
-	size = ft_get_line_size(stash);
+	size = gnl_get_line_size(stash);
 	*line = (char *)malloc(size * sizeof(char));
 	if (*line == NULL)
 	{
-		ft_reset(stash, RESET_ALL_TO_DEFAULT);
+		gnl_reset(stash, RESET_ALL_TO_DEFAULT);
 		return (FAIL);
 	}
-	ft_dump_line(stash, *line);
+	gnl_dump_line(stash, *line);
 	if (stash->start >= stash->tail->size)
-		ft_reset(stash, KEEP_FILE_DESCRIPTOR);
+		gnl_reset(stash, KEEP_FILE_DESCRIPTOR);
 	return (SUCCESS);
 }

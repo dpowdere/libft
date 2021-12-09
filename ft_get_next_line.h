@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 11:31:13 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/12/19 19:43:03 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/12/09 17:18:43 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ struct			s_stash
 # define DEFAULT_START_POS	0
 # define DEFAULT_END_POS	-1
 
-static int		ft_add_tail(struct s_stash *stash);
-static void		ft_dump_line(struct s_stash *stash, char *line);
-static int		ft_find_nl(struct s_stash *stash);
-static int		ft_get_line_from_stash(struct s_stash *stash, char **line);
-static size_t	ft_get_line_size(struct s_stash *stash);
-static void		ft_reset(struct s_stash *stash, int kind);
+int		gnl_add_tail(struct s_stash *stash);
+void	gnl_dump_line(struct s_stash *stash, char *line);
+int		gnl_find_nl(struct s_stash *stash);
+int		gnl_get_line_from_stash(struct s_stash *stash, char **line);
+size_t	gnl_get_line_size(struct s_stash *stash);
+void	gnl_reset(struct s_stash *stash, int kind);
 
 # define RESET_ALL_TO_DEFAULT	0
 # define KEEP_FILE_DESCRIPTOR	1

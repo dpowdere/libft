@@ -46,6 +46,7 @@ CONTENTS := \
 \
 	ft_free_null.c \
 	ft_get_next_line.c \
+	ft_get_next_line_utils.c \
 	ft_is_big_endian.c \
 	ft_itoa.c \
 	ft_jbase.c \
@@ -96,7 +97,7 @@ endif
 
 NAME := $(LIBNAME).a
 OBJS := $(CONTENTS:.c=.o)
-DEPS := $(OBJS:.o=.d))
+DEPS := $(OBJS:.o=.d)
 
 ################################################################################
 
@@ -105,12 +106,8 @@ DEPS := $(OBJS:.o=.d))
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $?
 
-%.o: %.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
-
-ft_get_next_line.o: ft_get_next_line.c ft_get_next_line_utils.c \
-                    ft_get_next_line.h
-	$(CC) $(CPPFLAGS) -include $(word 2,$^) $(CFLAGS) -c -o $@ $<
+#%.o: %.c
+#	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
 all: $(NAME)
 

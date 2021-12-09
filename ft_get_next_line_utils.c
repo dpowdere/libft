@@ -6,7 +6,7 @@
 /*   By: dpowdere <dpowdere@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 12:36:23 by dpowdere          #+#    #+#             */
-/*   Updated: 2020/12/19 19:26:38 by dpowdere         ###   ########.fr       */
+/*   Updated: 2021/12/09 17:21:12 by dpowdere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "ft_get_next_line.h"
 
-static size_t	ft_get_line_size(struct s_stash *stash)
+size_t	gnl_get_line_size(struct s_stash *stash)
 {
 	struct s_part	*cursor;
 	size_t			size;
@@ -33,7 +33,7 @@ static size_t	ft_get_line_size(struct s_stash *stash)
 	return (size + stash->end + 1);
 }
 
-static inline ssize_t	ft_j(struct s_part *cursor, struct s_stash *stash)
+static inline ssize_t	gnl_j(struct s_part *cursor, struct s_stash *stash)
 {
 	ssize_t			j;
 
@@ -43,7 +43,7 @@ static inline ssize_t	ft_j(struct s_part *cursor, struct s_stash *stash)
 	return (j);
 }
 
-static void	ft_dump_line(struct s_stash *stash, char *line)
+void	gnl_dump_line(struct s_stash *stash, char *line)
 {
 	struct s_part	*cursor;
 	struct s_part	*tmp;
@@ -54,7 +54,7 @@ static void	ft_dump_line(struct s_stash *stash, char *line)
 	i = 0;
 	while (cursor && cursor->next)
 	{
-		j = ft_j(cursor, stash);
+		j = gnl_j(cursor, stash);
 		while (j < cursor->size)
 			line[i++] = cursor->s[j++];
 		tmp = cursor;
@@ -63,7 +63,7 @@ static void	ft_dump_line(struct s_stash *stash, char *line)
 			free(tmp->s);
 		free(tmp);
 	}
-	j = ft_j(cursor, stash);
+	j = gnl_j(cursor, stash);
 	while (j < stash->end)
 		line[i++] = stash->tail->s[j++];
 	line[i] = '\0';
